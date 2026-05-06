@@ -25,8 +25,13 @@ export class CoffeeService {
         });
     }
 
-    async findOneCoffee(id){
-        const data = await this.coffeeRepository.findOne(id);
+    async findOneCoffee(id : string){
+        const data = await this.coffeeRepository.findOne({
+            where: {
+                id : +id
+            },
+            relations : ['flavors']
+        });
         return data;
     }
 
