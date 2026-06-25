@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Tasks } from "../../tasks/entity/tasks.entity";
 @Entity()
 export class Users {
     @PrimaryGeneratedColumn()
@@ -13,6 +14,6 @@ export class Users {
     @Column()
     password! : string;
 
-    @Column('json',{ nullable : true })
-    tasks! : string[];
+    @OneToMany(type => Tasks , (tasks) => tasks.user)
+    tasks? : Tasks[]
 }

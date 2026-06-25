@@ -10,6 +10,4 @@ export class CreateUserDto {
     @IsString()
     readonly email! : string;
 
-    @IsOptional() @IsString({each:true})
-    readonly tasks? : string[];
 } 
