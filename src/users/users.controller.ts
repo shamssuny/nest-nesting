@@ -21,17 +21,22 @@ export class UsersController {
         if(id == 'err'){
             throw new HttpException('DJ PANKAZ',HttpStatus.BAD_REQUEST)
         }
-        return "user id: "+id;
+        return this.userService.findOneUser(id);
     }
 
     @Post('')
     create(@Body() createUserDto : CreateUserDto){
-        return createUserDto
+        return this.userService.createUser(createUserDto)
     }
 
-    @Patch('')
-    update(@Body() updateUserDto : UpdateUserDto){
-        return updateUserDto
+    @Patch(':id')
+    update(@Param('id') id,@Body() updateUserDto : UpdateUserDto){
+        return this.userService.updateUser(id,updateUserDto)
+    }
+
+    @Delete(':id')
+    deleteOne(@Param('id') id){
+        return this.userService.deleteOneUser(id)
     }
 
     
