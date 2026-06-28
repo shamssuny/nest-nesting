@@ -8,7 +8,10 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist : true, //only the DTO params are received, others params will cut
-      transform : true //try to convert as it is like '21' will try be 21 
+      transform : true, //try to convert as it is like '21' will try be 21 
+      transformOptions : {
+        enableImplicitConversion : true
+      }
     })
   );
 
