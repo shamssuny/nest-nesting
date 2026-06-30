@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { TasksService } from './tasks.service';
+import { PaginationDto } from '../common/dto/pagination.dto';
 
 @Controller('tasks')
 export class TasksController {
@@ -16,8 +17,9 @@ export class TasksController {
     }
 
     @Get(':userId')
-    getTasks(@Param('userId') userId : number){
-        return this.tasksService.getTasks(userId);
+    getTasks(@Param('userId') userId : number, @Query() params : PaginationDto){
+       // const userId = params?.userId;
+        return this.tasksService.getTasks(userId, params);
     }
 
 }
