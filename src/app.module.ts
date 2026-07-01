@@ -18,7 +18,7 @@ import { TasksModule } from './tasks/tasks.module';
       password: 'your_password',
       database: 'your_db',
       //entities: [],
-      synchronize: true,
+      //synchronize: true,
       autoLoadEntities: true
     }),
     TasksModule

@@ -12,6 +12,12 @@ export class Tasks {
     @Column()
     details! : string
 
+    @Column({enum: ['PENDING', 'IN_PROGRESS', 'COMPLETED'] , default: 'PENDING'})
+    status! : string;
+
+    @Column({nullable: true})
+    note! : string;
+
     @ManyToOne(type => Users, (users) => users.tasks, {onDelete: 'CASCADE'})
     user? : Users
 }
